@@ -1,0 +1,209 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN" 
+   "http://www.w3.org/TR/REC-html32/strict.dtd"> 
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<title>fMSX Utilities for disk-images</title>
+
+<meta name="description" content="This page offers utilities that make it easier to work with the
+disk images that are used by fMSX, an MSX-emulator written by Marat
+Fayzullin.  The latest release is version 1.6.">
+<meta name="keywords" content="disk images,files,fMSX,program">
+<meta name="language" content="English">
+</head>
+<body>
+<h1>Programs to handle disk images</h1>
+
+I made programs to copy files to and from disk images as used by <a href="https://web.archive.org/web/20020204045404/http://www.komkon.org/fms/fMSX/">fMSX</a>, an <a href="https://web.archive.org/web/20020204045404/http://www.komkon.org/fms/MSX/">MSX</a>-emulator written by
+Marat Fayzullin, for which I have also written <a href="X-drivers.html">a
+set of X11-drivers</a>. They make strictly binary copies so you may
+need additional conversion programs.  Use rddsk to read files from
+disk images and wrdsk to write files to disk images. Get help by running
+the programs without arguments.  Both programs support modification
+times using the local time on the disk image. <p>
+
+I have done some testing on these programs but I can not guarantee
+correctness so use them with some caution.  
+
+A known problem is that wrdsk may create
+disk images with duplicate filenames, this may be helped by renaming
+the files with duplicate names using the emulator.  This will cause
+some rename errors but you will end up with unique filenames only. 
+
+Another known problem is that rddsk does not check whether writes have
+been successful I know how to fix it but it will take some time before
+I have done so and checked the new version. Before that you may want
+to compare the length of the copy with the file-length in the
+disk image (use <code>rddsk -l</code> for the latter) <p>
+
+If you are working under HP-UX you could also use <code>doscp</code>
+and other utilities starting with <code>dos</code> to work with
+disk images. See the manuals on your system for details. Users of
+windows&nbsp;95 or windows&nbsp;NT&nbsp;4.0 who like their mouse, may
+prefer using the program <a href="https://web.archive.org/web/20020204045404/http://members.eunet.at/lexlechz/DiskMgr.html">Disk-Manager</a>,
+written by <a href="https://web.archive.org/web/20020204045404/http://members.eunet.at/lexlechz">Rudolf
+	  Lechleitner</a><p>.  
+
+<h2>Sources</h2>
+This site always has the latest release, which is now version 1.6.
+The sources included in the 
+<a href="https://web.archive.org/web/20020204045404/http://www.komkon.org/fms/fMSX/">main fMSX-distribution</a> can
+be out of date.  
+Starting from version 1.5 there is an extra source file (DiskUtil.c)
+which should also be compiled. If you use the makefile from the main
+distribution add "<code> DiskUtil.c</code>" to the following lines
+<pre><code>
+contrib:rddsk.c wrdsk.c DiskUtil.h Boot.h
+        ${CC} -o rddsk rddsk.c
+        ${CC} -o wrdsk wrdsk.c
+</code></pre>
+<dl>
+  <dt><a href="wrdsk.c">wrdsk.c</a> (9&nbsp;418&nbsp;bytes, Mon Sep 14 09:38:55 CEST 1998
+)
+    <dd>Use this program to copy files to disk images. 
+        It can also be used to create new disk images.
+  <dt><a href="rddsk.c">rddsk.c</a> (9&nbsp;570&nbsp;bytes, Fri Sep 11 13:14:42 CEST 1998
+)
+    <dd>Use this program to copy files from disk images. 
+	It can also be used to list the contents of a disk image.
+  <dt><a href="DiskUtil.c">DiskUtil.c</a> (1&nbsp;834&nbsp;bytes, Fri Sep 11 12:53:14 CEST 1998
+)
+    <dd>This file contains some common functions for wrdsk and rddsk.
+  <dt><a href="DiskUtil.h">DiskUtil.h</a> (2&nbsp;039&nbsp;bytes, Fri Sep 11 12:18:14 CEST 1998
+)
+    <dd>This file contains some common definitions and declarations 
+	for wrdsk and rddsk.
+  <dt><a href="Boot.h">Boot.h</a> (3&nbsp;448&nbsp;bytes, Wed Nov 13 13:03:06 CET 1996
+)
+    <dd>This file contains the boot-sector (<code>byte BootBlock[]</code>),
+	that is used by wrdsk to make a new disk image. 
+	The same boot-sector is used by fMSX to format a disk.
+</dl>
+You can get the sources above at once as a 
+<a href="DiskUtil16.tar.gz">gzipped tar-archive</a> (7&nbsp;323&nbsp;bytes, Mon Sep 14 11:35:23 CEST 1998
+).  <p>
+For the HI-TECH C-compiler on MSX you will also need the following
+files, which may also be useful on other systems:
+<dl>
+<dt><a href="mktime.c">mktime.c</a> (2&nbsp;601&nbsp;bytes, Wed Aug 27 14:36:57 CEST 1997
+)
+<dd>This is an implementation of the <code>mktime()</code>-function, that is 
+    used by rddsk. 
+    Like all time related functions on MSX it doesn't know about time-zones.
+<dt><a href="unistd.h">unistd.h</a> (192&nbsp;bytes, Mon Aug 25 15:20:28 CEST 1997
+)
+<dd> This file just includes <code>&lt;unixio.h&gt;</code> and provides some
+     <code>#define</code>'s that are missing that file.
+</dl>
+
+<h2>Compiled versions</h2>
+Compiled versions are available for the following systems:
+<dl>
+<dt>MSX-DOS
+<dd>The programs have been compiled using Hi_Tech C under MSX-DOS&nbsp;1. 
+    Version 1.5 for MSX was very bad but version 1.6 has undergone more
+    extensive tests and seems ok.
+    These programs were linked with the c-libraries provided with Hi_Tech C, 
+    which have some limitations, see my <a href="#wish_list">wish list</a>.
+
+    <ul>
+    <li> <a href="wrdsk.com">wrdsk.com</a> (20&nbsp;608&nbsp;bytes, Mon Sep 14 11:35:17 CEST 1998
+)
+    <li> <a href="rddsk.com">rddsk.com</a> (17&nbsp;664&nbsp;bytes, Mon Sep 14 11:35:17 CEST 1998
+)
+    </ul>
+
+    You can also download both programs as a single 
+    <a href="dsk_msx.zip">zip-file</a> (18&nbsp;559&nbsp;bytes, Mon Sep 14 11:35:27 CEST 1998
+).
+<dt>MS-DOS
+<dd>Compiled versions for MS-DOS are available from the
+    <a href="https://web.archive.org/web/20020204045404/http://www.komkon.org/~dekogel/fmsx.html">fMSX MS-DOS
+    Distribution Site</a>.
+</dl>
+
+<h2>Wish list</h2><a name="wish_list"></a>
+There are some things that could be improved in these programs, but I
+think they are already useful as they are now.
+<ul>
+<li> Checking whether writes are successful in rddsk (in progress).
+<li> Checking filenames to preventing creating duplicate filenames in
+     disk images.
+<li> Creating an option to delete files in disk images.
+<li> The libraries from Hi_Tech C could also be improved:
+  <ul>
+  <li> Rddsk.com should be able to create file with sizes that are not
+       a multiple of 128 bytes but for most purposes the padding is not a
+       real problem.
+  <li> It would be nice if rddsk.com could read disk images on a cd-rom directly.
+  </ul>
+</ul>
+If you would like to contribute to these programs, it is wise to
+contact me before you start. Otherwise we might end up doing things twice.
+
+<h2>Changes</h2>
+
+<h3>April 4 1997</h3>
+Some users reported problems problems with wrdsk under MS-DOS. These
+problems were caused by opening the files to copy to the disk image, in
+text-mode (i.e. without <code>|O_BINARY</code>), this makes no
+difference under unix, but it does under systems that have other
+conventions for text-files. Anyway, it is fixed now.
+
+<h3>May 6 1997</h3>
+I have added some extra checks to reduce the chance of wrdsk spoiling
+something that is not a disk image-file. 
+rddsk now has a <code>-l</code> option to show the directory of the 
+disk image in long format. 
+Both programs gives more informative error messages now.
+
+<h3>May 26 1997</h3>
+I fixed some bugs related to not reading the Fat from the disk image.
+wrdsk no longer thinks existing disk images are too long.
+
+<h3>August 27 1997</h3> 
+The programs have been adapted for compilation for MSX-DOS using the 
+<a href="https://web.archive.org/web/20020204045404/http://www.htsoft.com/">HI-TECH</a> 
+<a href="https://web.archive.org/web/20020204045404/ftp://ftp.funet.fi/pub/msx/c/">C-compiler</a>. 
+I had to make work-arounds for some flaws in the library and to
+simplify some expressions. 
+The programs now call <code>creat()</code> to truncate or create
+files, the only flags used in <code>open()</code>-calls are
+<code>O_RDONLY</code>, <code>O_WRONLY</code>, <code>O_RDWR</code> and
+<code>O_BINARY</code>. This should make it easier to port the programs
+to other platforms.  The time-stamp-support can be suppressed by
+compiling with <code>-DPOOR</code>.
+
+<h3>September 14 1998</h3>
+I fixed some bugs involving using int's instead of long int's for
+computing the offset in diskimages and a similar problem in computing
+numbers in <code>DirEntry</code>'s. These caused problems on systems
+where int's default to short. 
+A bug in the Hi-Tech C compiler also caused some problems.
+The programs now allow disk images with cluster that are not 1024 bytes
+in size.
+
+ 
+<hr><i><font size="-1">
+
+This page can be found at 
+<code>
+<a href="https://web.archive.org/web/20020204045404/http://www.math.utwente.nl/">http://www.math.utwente.nl</a>/<a href="https://web.archive.org/web/20020204045404/http://www.math.utwente.nl/~metselaa/">~metselaa</a>/<a href="https://web.archive.org/web/20020204045404/http://www.math.utwente.nl/~metselaa/msx/">msx</a>/<a href="https://web.archive.org/web/20020204045404/http://www.math.utwente.nl/~metselaa/msx/diskutil.html">diskutil.html</a></code><br>
+and is made by
+<a href="/web/20020204045404/http://www.math.utwente.nl/~metselaa">Arnold Metselaar</a>
+(<a href="https://web.archive.org/web/20020204045404/mailto:A.Metselaar@math.utwente.nl">A.Metselaar@math.utwente.nl</a>).<br>
+It was generated Tue Jan 22 09:21:53 CET 2002
+ from a file 
+that was last modified on Tue Nov 20 14:00:04 CET 2001 .
+
+</font></i>
+
+</body></html>
+<!--
+     FILE ARCHIVED ON 04:54:04 Feb 04, 2002 AND RETRIEVED FROM THE
+     INTERNET ARCHIVE ON 00:12:45 Apr 22, 2019.
+     JAVASCRIPT APPENDED BY WAYBACK MACHINE, COPYRIGHT INTERNET ARCHIVE.
+
+     ALL OTHER CONTENT MAY ALSO BE PROTECTED BY COPYRIGHT (17 U.S.C.
+     SECTION 108(a)(3)).
+-->
