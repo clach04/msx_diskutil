@@ -48,7 +48,7 @@
 #ifndef POOR
 #include <fcntl.h>
 #include <utime.h>
-#include <sys/errno.h>
+#include <errno.h>
 #include <sys/stat.h>
 #include <sys/types.h>
 #include <sys/time.h>
@@ -291,7 +291,7 @@ void ReadFile(DirEntry *msxf)
 	tbuf.modtime=mktime(rdtime(msxf));
 	utime(name, &tbuf);
     }
-#endif POOR
+#endif /* POOR */
 }
 
 void ls(DirEntry *de)
@@ -315,7 +315,7 @@ void lsl(DirEntry *de)
 	"%.8s.%.3s %6ld %s\n",
 #else
 	"%.8s.%.3s %6ld %s",
-#endif
+#endif /* POOR */
 	de->d_fname,de->d_ext, 
 	(long)rdlg(de->d_size), datebuf);
 }
@@ -331,7 +331,7 @@ void help(void)
 #else
     printf("Usage: %s <diskimage> [-l|-t] [<fspec1>] [<fspec2>] ...\n",
 	   progname);
-#endif
+#endif /* POOR */
     puts("Use -l to list filenames with size and date.");
     puts("Use -t to list filenames only.");
     puts("If <fspec>'s  are given only the files matching at least one ");
