@@ -17,70 +17,70 @@ This site always has the latest release, which is now version 1.6. The sources i
             ${CC} -o rddsk rddsk.c
             ${CC} -o wrdsk wrdsk.c
 
-<dl>
 
-<dt>[wrdsk.c](wrdsk.c) (9 418 bytes, Mon Sep 14 09:38:55 CEST 1998 )</dt>
 
-<dd>Use this program to copy files to disk images. It can also be used to create new disk images.</dd>
+[wrdsk.c](wrdsk.c) (9 418 bytes, Mon Sep 14 09:38:55 CEST 1998 )
 
-<dt>[rddsk.c](rddsk.c) (9 570 bytes, Fri Sep 11 13:14:42 CEST 1998 )</dt>
+Use this program to copy files to disk images. It can also be used to create new disk images.
 
-<dd>Use this program to copy files from disk images. It can also be used to list the contents of a disk image.</dd>
+[rddsk.c](rddsk.c) (9 570 bytes, Fri Sep 11 13:14:42 CEST 1998 )
 
-<dt>[DiskUtil.c](DiskUtil.c) (1 834 bytes, Fri Sep 11 12:53:14 CEST 1998 )</dt>
+Use this program to copy files from disk images. It can also be used to list the contents of a disk image.
 
-<dd>This file contains some common functions for wrdsk and rddsk.</dd>
+[DiskUtil.c](DiskUtil.c) (1 834 bytes, Fri Sep 11 12:53:14 CEST 1998 )
 
-<dt>[DiskUtil.h](DiskUtil.h) (2 039 bytes, Fri Sep 11 12:18:14 CEST 1998 )</dt>
+This file contains some common functions for wrdsk and rddsk.
 
-<dd>This file contains some common definitions and declarations for wrdsk and rddsk.</dd>
+[DiskUtil.h](DiskUtil.h) (2 039 bytes, Fri Sep 11 12:18:14 CEST 1998 )
 
-<dt>[Boot.h](Boot.h) (3 448 bytes, Wed Nov 13 13:03:06 CET 1996 )</dt>
+This file contains some common definitions and declarations for wrdsk and rddsk.
 
-<dd>This file contains the boot-sector (`byte BootBlock[]`), that is used by wrdsk to make a new disk image. The same boot-sector is used by fMSX to format a disk.</dd>
+[Boot.h](Boot.h) (3 448 bytes, Wed Nov 13 13:03:06 CET 1996 )
 
-</dl>
+This file contains the boot-sector (`byte BootBlock[]`), that is used by wrdsk to make a new disk image. The same boot-sector is used by fMSX to format a disk.
+
+
 
 You can get the sources above at once as a [gzipped tar-archive](DiskUtil16.tar.gz) (7 323 bytes, Mon Sep 14 11:35:23 CEST 1998 ).
 
 For the HI-TECH C-compiler on MSX you will also need the following files, which may also be useful on other systems:
 
-<dl>
 
-<dt>[mktime.c](mktime.c) (2 601 bytes, Wed Aug 27 14:36:57 CEST 1997 )</dt>
 
-<dd>This is an implementation of the `mktime()`-function, that is used by rddsk. Like all time related functions on MSX it doesn't know about time-zones.</dd>
+[mktime.c](mktime.c) (2 601 bytes, Wed Aug 27 14:36:57 CEST 1997 )
 
-<dt>[unistd.h](unistd.h) (192 bytes, Mon Aug 25 15:20:28 CEST 1997 )</dt>
+This is an implementation of the `mktime()`-function, that is used by rddsk. Like all time related functions on MSX it doesn't know about time-zones.
 
-<dd>This file just includes `<unixio.h>` and provides some `#define`'s that are missing that file.</dd>
+[unistd.h](unistd.h) (192 bytes, Mon Aug 25 15:20:28 CEST 1997 )
 
-</dl>
+This file just includes `<unixio.h>` and provides some `#define`'s that are missing that file.
+
+
 
 ## Compiled versions
 
 Compiled versions are available for the following systems:
 
-<dl>
 
-<dt>MSX-DOS</dt>
 
-<dd>The programs have been compiled using Hi_Tech C under MSX-DOS 1\. Version 1.5 for MSX was very bad but version 1.6 has undergone more extensive tests and seems ok. These programs were linked with the c-libraries provided with Hi_Tech C, which have some limitations, see my [wish list](#wish_list).
+MSX-DOS
+
+The programs have been compiled using Hi_Tech C under MSX-DOS 1\. Version 1.5 for MSX was very bad but version 1.6 has undergone more extensive tests and seems ok. These programs were linked with the c-libraries provided with Hi_Tech C, which have some limitations, see my [wish list](#wish_list).
 
 *   [wrdsk.com](wrdsk.com) (20 608 bytes, Mon Sep 14 11:35:17 CEST 1998 )
 *   [rddsk.com](rddsk.com) (17 664 bytes, Mon Sep 14 11:35:17 CEST 1998 )
 
-You can also download both programs as a single [zip-file](dsk_msx.zip) (18 559 bytes, Mon Sep 14 11:35:27 CEST 1998 ).</dd>
+You can also download both programs as a single [zip-file](dsk_msx.zip) (18 559 bytes, Mon Sep 14 11:35:27 CEST 1998 ).
 
-<dt>MS-DOS</dt>
+MS-DOS
 
-<dd>Compiled versions for MS-DOS are available from the [fMSX MS-DOS Distribution Site](https://web.archive.org/web/20020204045404/http://www.komkon.org/~dekogel/fmsx.html).</dd>
+Compiled versions for MS-DOS are available from the [fMSX MS-DOS Distribution Site](https://web.archive.org/web/20020204045404/http://www.komkon.org/~dekogel/fmsx.html).
 
-</dl>
+
 
 ## Wish list
 
-<a name="wish_list"></a>There are some things that could be improved in these programs, but I think they are already useful as they are now.
+There are some things that could be improved in these programs, but I think they are already useful as they are now.
 
 *   Checking whether writes are successful in rddsk (in progress).
 *   Checking filenames to preventing creating duplicate filenames in disk images.
@@ -115,6 +115,6 @@ I fixed some bugs involving using int's instead of long int's for computing the 
 
 * * *
 
-_<font size="-1">This page can be found at `[http://www.math.utwente.nl](https://web.archive.org/web/20020204045404/http://www.math.utwente.nl/)/[~metselaa](https://web.archive.org/web/20020204045404/http://www.math.utwente.nl/~metselaa/)/[msx](https://web.archive.org/web/20020204045404/http://www.math.utwente.nl/~metselaa/msx/)/[diskutil.html](https://web.archive.org/web/20020204045404/http://www.math.utwente.nl/~metselaa/msx/diskutil.html)`  
+This page can be found at `[http://www.math.utwente.nl](https://web.archive.org/web/20020204045404/http://www.math.utwente.nl/)/[~metselaa](https://web.archive.org/web/20020204045404/http://www.math.utwente.nl/~metselaa/)/[msx](https://web.archive.org/web/20020204045404/http://www.math.utwente.nl/~metselaa/msx/)/[diskutil.html](https://web.archive.org/web/20020204045404/http://www.math.utwente.nl/~metselaa/msx/diskutil.html)`  
 and is made by [Arnold Metselaar](/web/20020204045404/http://www.math.utwente.nl/~metselaa) ([A.Metselaar@math.utwente.nl](https://web.archive.org/web/20020204045404/mailto:A.Metselaar@math.utwente.nl)).  
-It was generated Tue Jan 22 09:21:53 CET 2002 from a file that was last modified on Tue Nov 20 14:00:04 CET 2001 .</font>_
+It was generated Tue Jan 22 09:21:53 CET 2002 from a file that was last modified on Tue Nov 20 14:00:04 CET 2001 .
