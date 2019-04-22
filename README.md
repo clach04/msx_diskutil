@@ -1,3 +1,9 @@
+# MSX disk image utils rddsk and wrdsk
+
+This is a copy of (the no longer available) DiskUtil16.tar.gz from http://www.math.utwente.nl/~metselaa/msx/diskutil.html
+
+The readme as it appeared is reproduced below (NOTE notes about fMSX including rddsk and wrdsk no longer appears to be correct as of April 2019).
+
 
 # Programs to handle disk images
 
