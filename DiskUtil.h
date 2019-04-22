@@ -26,6 +26,8 @@
 #define SEEK_END 2
 #endif
 
+#include <stdlib.h>
+
 #define usint unsigned short int
 #define byte unsigned char
 
